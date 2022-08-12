@@ -14,13 +14,10 @@ const errorHandler = (err, req, res, next) => {
       err.status = 400;
       err.message = 'Some fields are unique and can not have duplicate content';
   }
-  if (err.code == 500) {
-      err.message = "Internal Server Error";
-  }
   return res
-    .status(err.status)
+    .status(err.status || 500)
     .json({
-      code: err.status,
+      code: err.status || 500,
       message: err.message || STATUS_CODES[err.status],
     });
 };

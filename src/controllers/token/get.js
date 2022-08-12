@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const createError = require('http-errors');
 
 const get = () => async (req, res, next) => {
-    try {dd
+    try {
         const username = req.body.username;
         if (!username) {
             throw new createError(405, "Username is required");
